@@ -19,8 +19,5 @@ public class CameraFollow : MonoBehaviour
     {
         // Update the camera's position to follow the target while maintaining the initial offset
         transform.position = target.position + offsetPosition;
-        Debug.Log("Object: " + target.position);
-        Debug.Log("Camera: " + transform.position);
-
     }
 }
