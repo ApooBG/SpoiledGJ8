@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 989
   m_ShowMode: 4
-  m_Title: Project
+  m_Title: Scene
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -119,7 +119,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 100
+  controlID: 98
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -418,9 +418,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: e46d0000
-      m_LastClickedID: 0
-      m_ExpandedIDs: 3ed6ffff58d6ffff
+      m_SelectedIDs: 1afbffff
+      m_LastClickedID: -1254
+      m_ExpandedIDs: 7cfaffff1afbffff26fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -868,9 +868,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -15.187756, y: 6.4878635, z: -1.0818688}
+    m_Target: {x: -14.262642, y: -4.9490876, z: 5.374525}
     speed: 2
-    m_Value: {x: -15.187756, y: 6.4878635, z: -1.0818688}
+    m_Value: {x: -14.262642, y: -4.9490876, z: 5.374525}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -916,13 +916,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.006353397, y: 0.9894676, z: -0.13973887, w: 0.043299824}
+    m_Target: {x: -0.43668753, y: -0.047151923, z: 0.021303033, w: -0.89853394}
     speed: 2
-    m_Value: {x: 0.0062869685, y: 0.98943454, z: -0.13822076, w: 0.043298725}
+    m_Value: {x: -0.4365583, y: -0.04578721, z: 0.02064038, w: -0.898273}
   m_Size:
-    m_Target: 0.8301274
+    m_Target: 5.002845
     speed: 2
-    m_Value: 0.8301274
+    m_Value: 5.002845
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -1066,7 +1066,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefabs
+    - Assets/Kabungus/HouseholdItems/Models
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -1076,16 +1076,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Prefabs
+  - Assets/Kabungus/HouseholdItems/Models
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Petar\Desktop\Unity Projects\Spoiled\SpoiledGJ8\Spoiled
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 161}
-    m_SelectedIDs: bc5b0000
-    m_LastClickedID: 23484
-    m_ExpandedIDs: 00000000a85b0000b05b0000c05b0000c45b0000e85b0000306f000000ca9a3b
+    scrollPos: {x: 0, y: 181}
+    m_SelectedIDs: 2a740000
+    m_LastClickedID: 29738
+    m_ExpandedIDs: 000000009a5d00009c5d00009e5d0000a05d0000a25d0000a45d0000326700001a7400001e740000b07f000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1113,7 +1113,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000a85b0000b05b0000c05b0000c45b0000e85b0000306f0000
+    m_ExpandedIDs: 000000009a5d00009c5d00009e5d0000a05d0000a25d0000a45d0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1140,7 +1140,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000e42301000000000038f80000dcf80000a8f90000b4f9000098a0000074a2000068a00000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
