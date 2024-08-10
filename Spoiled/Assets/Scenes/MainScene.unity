@@ -120,11 +120,31 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &73906390 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8056440213919239772, guid: 2dad3de201b99994bbf1735926be1d46, type: 3}
+  m_PrefabInstance: {fileID: 372306510}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &118486537 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8148065664634514796, guid: 2dad3de201b99994bbf1735926be1d46, type: 3}
   m_PrefabInstance: {fileID: 372306510}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &118486538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73906390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fd4556af641213478fdf104984ee8a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetMaterial: {fileID: 2100000, guid: b359fe296915c3442887833a8a10d63e, type: 2}
+  targetMaterial2: {fileID: 2100000, guid: c1e2778bdd64b654f8c7245c3f0ef897, type: 2}
+  rottenPercentage: 0
 --- !u!1001 &366373212
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -193,6 +213,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2703655140506930180, guid: 2dad3de201b99994bbf1735926be1d46, type: 3}
+      propertyPath: rotting
+      value: 
+      objectReference: {fileID: 118486538}
+    - target: {fileID: 2799103582066989889, guid: 2dad3de201b99994bbf1735926be1d46, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: b359fe296915c3442887833a8a10d63e, type: 2}
+    - target: {fileID: 5042740275223118714, guid: 2dad3de201b99994bbf1735926be1d46, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: c1e2778bdd64b654f8c7245c3f0ef897, type: 2}
     - target: {fileID: 8056440213919239772, guid: 2dad3de201b99994bbf1735926be1d46, type: 3}
       propertyPath: m_Name
       value: TomatoParent
@@ -240,7 +272,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8056440213919239772, guid: 2dad3de201b99994bbf1735926be1d46, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 118486538}
   m_SourcePrefab: {fileID: 100100000, guid: 2dad3de201b99994bbf1735926be1d46, type: 3}
 --- !u!1 &2031338906
 GameObject:

@@ -12,11 +12,11 @@ public class PlayerMovement : MonoBehaviour
     float moveSpeed;       // Speed at which the GameObject moves
 
     public float rotationSpeed = 200f; // Speed at which the GameObject rotates
-
-    public int rottenPercentage = 0;   // Percentage of how rotten the tomato is
+    public Rotting rotting;
 
     private Rigidbody rb;              // Rigidbody component for physics-based movement
     private bool isGrounded = true;    // Flag to check if the tomato is on the ground
+    private float rottenPercentage;
 
     void Start()
     {
@@ -31,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        rottenPercentage = rotting.rottenPercentage;
         if (rottenPercentage > 0)
         {
             moveSpeed = normalMoveSpeed - (normalMoveSpeed * rottenPercentage / 100);
