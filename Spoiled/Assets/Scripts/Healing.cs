@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,12 +11,12 @@ public class Healing : MonoBehaviour
 
     [SerializeField] float distanceNeeded = 0.03f;
     [SerializeField] int healingPerSecond = 5;
-    [SerializeField] int maximumHealingStorage = 50;
+    [SerializeField] float maximumHealingStorage = 50;
     [SerializeField] float respawnTime = 10f;
     [SerializeField] Canvas healthCanvas;
     [SerializeField] Image healthBar;
 
-    int healingStorage;
+    float healingStorage;
     float time;
     MeshRenderer renderer;
 
@@ -68,14 +69,14 @@ public class Healing : MonoBehaviour
                 healingStorage = maximumHealingStorage;
             }
         }
-
-        
-        Debug.Log(healthBar.fillAmount = healingStorage / 100f);
     }
 
     void UpdateUI()
     {
-        healthBar.fillAmount = healingStorage / 100f;
+        healthBar.fillAmount = healingStorage / maximumHealingStorage;
+        Debug.Log(healingStorage / maximumHealingStorage);
+        Debug.Log("Healing " + healingStorage + " /" + maximumHealingStorage);
+
     }
 
     void Heal()
@@ -88,7 +89,7 @@ public class Healing : MonoBehaviour
 
         else if (healingStorage > 0)
         {
-            rotting.rottenPercentage -= healingStorage;
+            rotting.rottenPercentage -= Convert.ToInt16(healingStorage);
             healingStorage = 0;
         }
 
