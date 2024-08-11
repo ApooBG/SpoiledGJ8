@@ -6756,7 +6756,7 @@ MonoBehaviour:
   rotting: {fileID: 729237264674479258}
   healthBar: {fileID: 50614807}
   emoji: {fileID: 1306539693}
-  surpriseEmoji: {fileID: 203500093711328390, guid: 3770f07facf8e448bb56a11298e95861, type: 3}
+  surpriseEmoji: {fileID: 0}
 --- !u!1 &2002276553 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5460913450981284698, guid: ca957e70f71588247b3b0799af7e758e, type: 3}
