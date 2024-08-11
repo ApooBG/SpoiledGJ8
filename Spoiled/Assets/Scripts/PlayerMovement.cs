@@ -5,6 +5,10 @@ using UnityEngine.EventSystems;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField] AudioClip roll;
+    [SerializeField] AudioClip jump;
+    [SerializeField] AudioSource audioSource;
+
     public float normalMoveSpeed = 0.1f;
     public float additionalRunningMoveSpeed = 0.1f;
     public float normalMass = 0.2f;
@@ -45,6 +49,26 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if (isMoving)
+        {
+            audioSource.clip = roll;
+        }
+
+        else if (audioSource.clip == roll)
+        {
+            audioSource.clip = null;
+        }
+
+        if (!isGrounded)
+        {
+            audioSource.clip = jump;
+        }
+
+        else if (audioSource.clip == jump)
+        {
+            audioSource.clip = null;
+        }
+
         rottenPercentage = rotting.rottenPercentage;
         if (rottenPercentage > 0)
         {
