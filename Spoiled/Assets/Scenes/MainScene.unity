@@ -6185,6 +6185,10 @@ PrefabInstance:
       propertyPath: keyPad
       value: 
       objectReference: {fileID: 1556500147}
+    - target: {fileID: 4899605215125690185, guid: 9cbf2bd0ea2655b4bb6ee2133a750440, type: 3}
+      propertyPath: additionalRunningMoveSpeed
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 5317452047089416493, guid: 9cbf2bd0ea2655b4bb6ee2133a750440, type: 3}
       propertyPath: m_LocalPosition.x
       value: -14.221
@@ -6229,6 +6233,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5717684001081857120, guid: 9cbf2bd0ea2655b4bb6ee2133a750440, type: 3}
+      propertyPath: movement
+      value: 
+      objectReference: {fileID: 372306513}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
