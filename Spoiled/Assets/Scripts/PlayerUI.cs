@@ -17,6 +17,8 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] Rotting rotting;
     [SerializeField] Image healthBar;
     [SerializeField] GameObject emoji;
+    [SerializeField] GameObject surpriseEmoji;
+
 
     int rottenPercentage;
     // Start is called before the first frame update
@@ -38,7 +40,8 @@ public class PlayerUI : MonoBehaviour
 
     void UpdateUI()
     {
-        healthBar.fillAmount = rottenPercentage / 100;
+        healthBar.fillAmount = (100-rottenPercentage) / 100;
+        Debug.Log((100f - rottenPercentage) / 100);
         
         foreach (HealthUI healthUI in healthUIList)
         {
