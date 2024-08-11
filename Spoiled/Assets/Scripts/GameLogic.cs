@@ -32,7 +32,7 @@ public class GameLogic : MonoBehaviour
         bool isVisible = visibilityChecker.IsTomatoVisible();
         Debug.Log("IsVisible " + isVisible);
 
-        if (person == "Father" && !isMoving && isVisible)
+        if (person == "Father" && isVisible)
         {
             if (isMoving)
             {
@@ -47,6 +47,11 @@ public class GameLogic : MonoBehaviour
             if (!isRotten && isVisible)
             {
                 // Need to hide, otherwise lose.
+                HandleLoseCondition();
+            }
+
+            if (isVisible && isMoving)
+            {
                 HandleLoseCondition();
             }
 
