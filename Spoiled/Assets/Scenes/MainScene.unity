@@ -286,8 +286,10 @@ MonoBehaviour:
   minimumPercentageForTotteness: 35
   isMoving: 0
   isRotten: 0
-  familyMember: Mother
+  familyMember: 
   openDoor: 0
+  timeAlive: 0
+  timeToOpenDoor: 0
 --- !u!4 &195764874
 Transform:
   m_ObjectHideFlags: 0
@@ -721,6 +723,10 @@ PrefabInstance:
       propertyPath: rotting
       value: 
       objectReference: {fileID: 372306514}
+    - target: {fileID: 2703655140506930180, guid: 2dad3de201b99994bbf1735926be1d46, type: 3}
+      propertyPath: additionalRunningMoveSpeed
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 2799103582066989889, guid: 2dad3de201b99994bbf1735926be1d46, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -817,6 +823,9 @@ MonoBehaviour:
   targetMaterial: {fileID: 2100000, guid: b359fe296915c3442887833a8a10d63e, type: 2}
   targetMaterial2: {fileID: 2100000, guid: c1e2778bdd64b654f8c7245c3f0ef897, type: 2}
   rottenPercentage: 0
+  rottenTimePerUnit: 0.5
+  rottenTimePerUnitRunning: 0.2
+  movement: {fileID: 372306513}
 --- !u!1 &386059687
 GameObject:
   m_ObjectHideFlags: 0
