@@ -19,7 +19,6 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] GameObject emoji;
     [SerializeField] GameObject surpriseEmoji;
 
-
     int rottenPercentage;
     // Start is called before the first frame update
     void Start()
@@ -30,10 +29,18 @@ public class PlayerUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (rottenPercentage != rotting.rottenPercentage)
+        if (rottenPercentage < rotting.rottenPercentage)
+        {
+            healthBar.color = Color.yellow;
+            rottenPercentage = rotting.rottenPercentage;
+            UpdateUI();
+        }
+
+        else if (rottenPercentage > rotting.rottenPercentage)
         {
             rottenPercentage = rotting.rottenPercentage;
             UpdateUI();
+            HealUI();
         }
     }
 
@@ -41,7 +48,6 @@ public class PlayerUI : MonoBehaviour
     void UpdateUI()
     {
         healthBar.fillAmount = (100-rottenPercentage) / 100f;
-        Debug.Log((100f - rottenPercentage) / 100);
         
         foreach (HealthUI healthUI in healthUIList)
         {
@@ -61,5 +67,10 @@ public class PlayerUI : MonoBehaviour
             }
         }
     }
-    
+
+    void HealUI()
+    {
+        healthBar.color = Color.green;
+    }
+
 }
