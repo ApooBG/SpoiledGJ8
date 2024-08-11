@@ -6,9 +6,13 @@ using UnityEngine.EventSystems;
 public class PlayerMovement : MonoBehaviour
 {
     public float normalMoveSpeed = 0.1f;       // Speed at which the GameObject moves
+    public float additionalRunningMoveSpeed = 0.1f;       // Speed at which the GameObject moves
     public float normalMass = 0.2f;      // Desired height of the jump
     public float jumpHeight = 1f;      // Desired height of the jump
+    public int massMultiplier = 3;      // Desired height of the jump
+
     public bool isMoving = false;
+    public bool isRunning = false;
 
     float moveSpeed;       // Speed at which the GameObject moves
 
@@ -36,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
         if (rottenPercentage > 0)
         {
             moveSpeed = normalMoveSpeed - (normalMoveSpeed * rottenPercentage / 100);
-            rb.mass = normalMass + ((normalMass * rottenPercentage / 100)*3);
+            rb.mass = normalMass + ((normalMass * rottenPercentage / 100)* massMultiplier);
         }
 
         else
@@ -51,6 +55,7 @@ public class PlayerMovement : MonoBehaviour
 
         Jump();
         Move(moveDirection, rotationDirection);
+        Run();
     }
 
     void Move(Vector3 moveDirection, Vector3 rotationDirection)
@@ -91,7 +96,11 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Calculate the new velocity based on the move direction
-        Vector3 newVelocity = moveDirection.normalized * moveSpeed;
+        Vector3 newVelocity = Vector3.zero;
+        if (isRunning)
+            newVelocity = moveDirection.normalized * (moveSpeed + additionalRunningMoveSpeed);
+        else
+            newVelocity = moveDirection.normalized * moveSpeed;
 
         // Keep the current Y velocity (to not interfere with gravity or jumping)
         newVelocity.y = rb.velocity.y;
@@ -118,6 +127,19 @@ public class PlayerMovement : MonoBehaviour
 
         if (!isGrounded)
             isMoving = true;
+    }
+
+    void Run()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            isRunning = true;
+        }
+
+        else if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            isRunning = false;
+        }
     }
 
     void OnCollisionEnter(Collision collision)
