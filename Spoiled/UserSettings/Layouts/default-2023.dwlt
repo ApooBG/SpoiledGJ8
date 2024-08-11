@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1706.6667
     height: 984
   m_ShowMode: 4
-  m_Title: Game
+  m_Title: Hierarchy
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -418,23 +418,23 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 8c730000
-      m_LastClickedID: 29580
-      m_ExpandedIDs: 9edeffffa4deffffaadeffff00fbffff847100003e7300007c730000
+      m_SelectedIDs: 3e730000
+      m_LastClickedID: 29502
+      m_ExpandedIDs: 00fbffff3e730000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: Fridge (1)
-        m_OriginalName: Fridge (1)
+        m_Name: 
+        m_OriginalName: 
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: -1386
+        m_UserData: 0
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 0
+        m_OriginalEventType: 11
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 8}
       m_SearchString: 
@@ -868,9 +868,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 1671.5586, y: 1105.6093, z: -175.08841}
+    m_Target: {x: 1920, y: 1080, z: 0}
     speed: 2
-    m_Value: {x: 1671.5586, y: 1105.6093, z: -175.08841}
+    m_Value: {x: 1920, y: 1080, z: -0.000020872165}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -918,11 +918,11 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: -0.21180476, y: 0.37172228, z: -0.089519635, w: -0.9003915}
     speed: 2
-    m_Value: {x: -0.21161889, y: 0.37139606, z: -0.089441076, w: -0.89960134}
+    m_Value: {x: -0.21180478, y: 0.3717223, z: -0.089519635, w: -0.9003915}
   m_Size:
-    m_Target: 362.03867
+    m_Target: 2405.63
     speed: 2
-    m_Value: 362.03867
+    m_Value: 2302.038
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -1153,7 +1153,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 147.66669}
     m_SelectedIDs: 5c8d0000
     m_LastClickedID: 36188
-    m_ExpandedIDs: 00000000628c0000648c0000668c0000688c00006a8c00006c8c00006e8c0000708c0000728c0000748c00005c8d0000788d000000ca9a3b
+    m_ExpandedIDs: 00000000628c0000648c0000668c0000688c00006a8c00006c8c00006e8c0000708c0000728c0000748c0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
