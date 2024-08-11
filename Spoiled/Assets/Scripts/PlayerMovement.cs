@@ -151,5 +151,4 @@ public class PlayerMovement : MonoBehaviour
             isMoving = false;
         }
     }
-
 }
