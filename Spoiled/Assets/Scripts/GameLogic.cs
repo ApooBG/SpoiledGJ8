@@ -5,6 +5,9 @@ using UnityEngine;
 public class GameLogic : MonoBehaviour
 {
     public VisibilityChecker visibilityChecker;
+    public PlayerMovement playerMovement;
+    public Rotting rotting;
+    public int minimumPercentageForTotteness = 35;
     public bool isMoving;
     public bool isRotten;
 
@@ -19,6 +22,16 @@ public class GameLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (rotting.rottenPercentage > minimumPercentageForTotteness)
+            isRotten = true;
+        else
+            isRotten = false;
+
+        if (playerMovement.isMoving)
+            isMoving = true;
+        else
+            isMoving = false;
+
         if (openDoor)
         {
             CheckFridgeDoorOpened(familyMember);
