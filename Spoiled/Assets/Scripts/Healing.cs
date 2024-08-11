@@ -33,30 +33,32 @@ public class Healing : MonoBehaviour
     {
         float distance = Vector3.Distance(transform.position, player.transform.position);
         time += Time.deltaTime;
-        healthCanvas.gameObject.SetActive(!rotting.enabled);
 
         if (distance < distanceNeeded)
         {
             if (healingStorage > 0)
             {
-                UpdateUI();
-                if (time > 1f)
+                if (rotting.rottenPercentage > 0)
                 {
-                    Heal();
-                    time = 0;
+                    UpdateUI();
+                    if (time > 1f)
+                    {
+                        Heal();
+                        time = 0;
+                    }
+                    healthCanvas.gameObject.SetActive(true);
                 }
-                rotting.enabled = false;
             }
 
             else
             {
-                rotting.enabled = true;
+                healthCanvas.gameObject.SetActive(false);
             }
         }
 
         else
         {
-            rotting.enabled = true;
+            healthCanvas.gameObject.SetActive(false);
         }
 
         if (healingStorage <= 0)
@@ -74,14 +76,17 @@ public class Healing : MonoBehaviour
     void UpdateUI()
     {
         healthBar.fillAmount = healingStorage / maximumHealingStorage;
-        Debug.Log(healingStorage / maximumHealingStorage);
-        Debug.Log("Healing " + healingStorage + " /" + maximumHealingStorage);
-
     }
 
     void Heal()
     {
-        if (healingPerSecond <= healingStorage)
+        if (rotting.rottenPercentage < healingPerSecond && rotting.rottenPercentage <= healingStorage)
+        {
+            healingStorage -= rotting.rottenPercentage;
+            rotting.rottenPercentage -= rotting.rottenPercentage;
+        }
+
+        else if (healingPerSecond <= healingStorage)
         {
             rotting.rottenPercentage -= healingPerSecond;
             healingStorage -= healingPerSecond;
