@@ -5,33 +5,42 @@ using UnityEngine.EventSystems;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float normalMoveSpeed = 0.1f;       // Speed at which the GameObject moves
-    public float additionalRunningMoveSpeed = 0.1f;       // Speed at which the GameObject moves
-    public float normalMass = 0.2f;      // Desired height of the jump
-    public float jumpHeight = 1f;      // Desired height of the jump
-    public int massMultiplier = 3;      // Desired height of the jump
+    public float normalMoveSpeed = 0.1f;
+    public float additionalRunningMoveSpeed = 0.1f;
+    public float normalMass = 0.2f;
+    public float jumpHeight = 1f;
+    public int massMultiplier = 3;
 
     public bool isMoving = false;
     public bool isRunning = false;
 
-    float moveSpeed;       // Speed at which the GameObject moves
+    float moveSpeed;
 
-    public float rotationSpeed = 200f; // Speed at which the GameObject rotates
+    public float rotationSpeed = 200f;
     public Rotting rotting;
 
-    private Rigidbody rb;              // Rigidbody component for physics-based movement
-    private bool isGrounded = true;    // Flag to check if the tomato is on the ground
+    private Rigidbody rb;
+    private bool isGrounded = true;
     private float rottenPercentage;
+
+    public Transform cameraTransform; // The parent of the camera, rotating around Y-axis
+
+    private Vector3 initialCameraPosition;
+    private Quaternion initialCameraRotation;
+    private bool isRotating = false;
 
     void Start()
     {
-        // Get the Rigidbody component attached to the GameObject
         rb = GetComponent<Rigidbody>();
 
         if (rb == null)
         {
             Debug.LogError("Rigidbody component is missing from this GameObject.");
         }
+
+        // Store the initial position and rotation of the camera
+        initialCameraPosition = cameraTransform.localPosition;
+        initialCameraRotation = cameraTransform.localRotation;
     }
 
     void Update()
@@ -40,53 +49,60 @@ public class PlayerMovement : MonoBehaviour
         if (rottenPercentage > 0)
         {
             moveSpeed = normalMoveSpeed - (normalMoveSpeed * rottenPercentage / 100);
-            rb.mass = normalMass + ((normalMass * rottenPercentage / 100)* massMultiplier);
+            rb.mass = normalMass + ((normalMass * rottenPercentage / 100) * massMultiplier);
         }
-
         else
         {
             moveSpeed = normalMoveSpeed;
             rb.mass = normalMass;
         }
 
-        // Handle rotation and movement input
         Vector3 moveDirection = Vector3.zero;
         Vector3 rotationDirection = Vector3.zero;
 
-        Jump();
-        Move(moveDirection, rotationDirection);
-        Run();
+        if (!isRotating)
+        {
+            Jump();
+            Move(moveDirection, rotationDirection);
+            Run();
+        }
+        
+        // Rotate the camera horizontally when the right mouse button is held
+        RotateCamera();
     }
 
     void Move(Vector3 moveDirection, Vector3 rotationDirection)
     {
+        // Get camera's forward and right vectors
+        Vector3 cameraForward = cameraTransform.forward;
+        Vector3 cameraRight = cameraTransform.right;
+
+        // Flatten the vectors so they don't affect vertical movement
+        cameraForward.y = 0;
+        cameraRight.y = 0;
+
+        cameraForward.Normalize();
+        cameraRight.Normalize();
+
         // Process the input for movement direction
         if (Input.GetKey(KeyCode.A))
         {
-            // A - Increase X position, Decrease Z rotation
-            moveDirection.x += 1;
-            rotationDirection.z -= 1;
+            moveDirection -= cameraRight; // Move left relative to the camera
             isMoving = true;
         }
         else if (Input.GetKey(KeyCode.D))
         {
-            // D - Decrease X position, Increase Z rotation
-            moveDirection.x -= 1;
-            rotationDirection.z += 1;
+            moveDirection += cameraRight; // Move right relative to the camera
             isMoving = true;
         }
         else if (Input.GetKey(KeyCode.W))
         {
-            // W - Decrease Z position, Decrease X rotation
-            moveDirection.z -= 1;
-            rotationDirection.x -= 1;
+            moveDirection += cameraForward; // Move forward relative to the camera
             isMoving = true;
         }
         else if (Input.GetKey(KeyCode.S))
         {
-            // S - Increase Z position, Increase X rotation
-            moveDirection.z += 1;
-            rotationDirection.x += 1;
+            moveDirection -= cameraForward; // Move backward relative to the camera
             isMoving = true;
         }
 
@@ -135,7 +151,6 @@ public class PlayerMovement : MonoBehaviour
         {
             isRunning = true;
         }
-
         else if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             isRunning = false;
@@ -149,6 +164,43 @@ public class PlayerMovement : MonoBehaviour
         {
             isGrounded = true;
             isMoving = false;
+        }
+    }
+
+    void RotateCamera()
+    {
+        if (Input.GetMouseButton(1))
+        {
+            isRotating = true;
+            float mouseX = Input.GetAxis("Mouse X") * rotationSpeed * Time.deltaTime;
+            float mouseY = Input.GetAxis("Mouse Y") * rotationSpeed * Time.deltaTime;
+
+            // Rotate the camera horizontally (left/right)
+            cameraTransform.Rotate(Vector3.up, mouseX, Space.World);
+
+            // Rotate the camera vertically (up/down) with clamping
+            float currentXRotation = cameraTransform.localEulerAngles.x;
+            float desiredXRotation = currentXRotation - mouseY;
+
+            // Clamp the vertical rotation to 90 degrees up and down from the start point
+            if (desiredXRotation > 180f) desiredXRotation -= 360f; // Convert to -180 to 180 range
+            desiredXRotation = Mathf.Clamp(desiredXRotation, -90f, 90f);
+
+            // Apply the clamped rotation
+            cameraTransform.localEulerAngles = new Vector3(desiredXRotation, cameraTransform.localEulerAngles.y, cameraTransform.localEulerAngles.z);
+        }
+        else if (isRotating)
+        {
+            // Smoothly return to initial position and rotation when the right mouse button is released
+            cameraTransform.localPosition = Vector3.Lerp(cameraTransform.localPosition, initialCameraPosition, Time.deltaTime * rotationSpeed);
+            cameraTransform.localRotation = Quaternion.Lerp(cameraTransform.localRotation, initialCameraRotation, Time.deltaTime * rotationSpeed);
+
+            if (Vector3.Distance(cameraTransform.localPosition, initialCameraPosition) < 0.01f && Quaternion.Angle(cameraTransform.localRotation, initialCameraRotation) < 1f)
+            {
+                cameraTransform.localPosition = initialCameraPosition;
+                cameraTransform.localRotation = initialCameraRotation;
+                isRotating = false;
+            }
         }
     }
 }
