@@ -8,6 +8,10 @@ public class Rotting : MonoBehaviour
     public Material targetMaterial2;  // The material that will change over time
 
     public int rottenPercentage = 0; // The rotten percentage (0 to 100)
+    public float rottenTimePerUnit = 0.5f;
+    public float rottenTimePerUnitRunning = 0.4f;
+
+    public PlayerMovement movement;
 
     private Color startMainColor = new Color(255f / 255f, 0f / 255f, 0f / 255f);  // Starting color (255,0,0)
     private Color endMainColor = new Color(72f / 255f, 0f / 255f, 0f / 255f);    // End color (150,0,0)
@@ -45,7 +49,13 @@ public class Rotting : MonoBehaviour
 
         time += Time.deltaTime;
 
-        if (time > 0.5)
+        if (time > rottenTimePerUnit && !movement.isRunning)
+        {
+            time = 0;
+            rottenPercentage++;
+        }
+
+        else if (time > rottenTimePerUnitRunning && movement.isRunning)
         {
             time = 0;
             rottenPercentage++;

@@ -826,8 +826,10 @@ MonoBehaviour:
   minimumPercentageForTotteness: 35
   isMoving: 0
   isRotten: 0
-  familyMember: Mother
+  familyMember: 
   openDoor: 0
+  timeAlive: 0
+  timeToOpenDoor: 0
 --- !u!4 &195764874
 Transform:
   m_ObjectHideFlags: 0
